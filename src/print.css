@@ -1,0 +1,186 @@
+/* ==========================================================================
+   Print Stylesheet (@media print) for Shamel ERP System
+   Ensures clean, paper-optimized, formatted reports & tables without UI noise
+   ========================================================================== */
+
+@media print {
+  /* Page Setup & Defaults */
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm 15mm 10mm;
+  }
+
+  /* Force Light Color Scheme for high-contrast ink-saving printing */
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-family: 'Cairo', 'Alexandria', system-ui, -apple-system, sans-serif !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 1. Remove all Interactive UI elements, Navigation, Sidebars & Modals backdrop */
+  nav,
+  aside,
+  header,
+  footer,
+  .no-print,
+  button,
+  input[type="button"],
+  input[type="submit"],
+  select:not(.print-select),
+  input[type="text"]:not(.print-input),
+  input[type="number"]:not(.print-input),
+  .cursor-pointer,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xs,
+  .animate-fadeIn,
+  .animate-spin {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Strictly hide everything marked with no-print or interactive action triggers */
+  .no-print,
+  [data-no-print="true"],
+  button:not(.allow-print),
+  .modal-backdrop,
+  .toast,
+  .tooltip {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* 2. Container & Layout Normalization */
+  #root,
+  main,
+  .app-container,
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  /* Flatten background colors & remove dark modes on print */
+  div, section, article, table {
+    background-color: transparent !important;
+  }
+
+  /* 3. High-Quality Print Tables */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    margin: 10pt 0 !important;
+    font-size: 9.5pt !important;
+    page-break-inside: auto !important;
+  }
+
+  thead {
+    display: table-header-group !important; /* Repeat header across multiple pages */
+  }
+
+  tfoot {
+    display: table-footer-group !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  th, td {
+    padding: 6pt 8pt !important;
+    border: 1px solid #cbd5e1 !important; /* Crisp slate border */
+    text-align: right !important;
+    vertical-align: middle !important;
+    color: #1e293b !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important; /* Light slate header */
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    border-bottom: 2px solid #94a3b8 !important;
+  }
+
+  tbody tr:nth-child(even) td {
+    background-color: #f8fafc !important; /* Subtle zebra striping */
+  }
+
+  /* 4. Badges, Tags & Summary Chips */
+  span, .badge, .tag {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  /* 5. Typography, Headings & Page-Break Safeguards */
+  h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 10pt !important;
+    margin-bottom: 4pt !important;
+  }
+
+  h1 { font-size: 16pt !important; }
+  h2 { font-size: 14pt !important; }
+  h3 { font-size: 12pt !important; }
+  h4, h5, h6 { font-size: 11pt !important; }
+
+  p, li, blockquote {
+    color: #334155 !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* 6. Invoice & Slip Print Containers */
+  .printable-invoice,
+  .printable-report,
+  .printable-card {
+    border: 1px solid #94a3b8 !important;
+    padding: 12pt !important;
+    margin-bottom: 15pt !important;
+    border-radius: 4pt !important;
+    page-break-inside: avoid !important;
+    background: #ffffff !important;
+  }
+
+  /* 7. Image & Logo Print Clarity */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 8. Keep essential stat cards structured */
+  .grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8pt !important;
+  }
+
+  .grid > div {
+    flex: 1 1 auto !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 8pt !important;
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "appId": "com.shamel.beautyerp",
+  "productName": "Shamel Beauty ERP",
+  "copyright": "Copyright © 2026 Sapry Eldeep",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "electron.cjs",
+    "electron/**/*",
+    "package.json"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64", "ia32"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "شامل لإدارة مراكز التجميل ERP"
+  },
+  "mac": {
+    "target": ["dmg", "zip"],
+    "category": "public.app-category.business"
+  },
+  "linux": {
+    "target": ["AppImage", "deb"],
+    "category": "Office"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "شامل لإدارة مراكز وفروع التجميل ERP",
+  "description": "منظومة إدارية ومحاسبية متكاملة لإدارة مراكز وفروع التجميل، والموظفين، والعملاء، والتقارير المالية والنسخ الاحتياطي",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
